@@ -27,6 +27,14 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Endereco> endereco;
 
+    public List<Endereco> getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(List<Endereco> endereco) {
+        this.endereco = endereco;
+    }
+
     public int getId() {
         return id;
     }
