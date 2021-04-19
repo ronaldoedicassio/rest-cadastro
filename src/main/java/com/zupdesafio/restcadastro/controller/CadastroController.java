@@ -27,8 +27,13 @@ public class CadastroController {
         return usuarioRepositoty.save(usuario);
     }
 
-    @DeleteMapping("/usuario")
+    @DeleteMapping
     public void removerUsuario(@RequestBody Usuario usuario){
         usuarioRepositoty.delete(usuario);
+    }
+
+    @PutMapping
+    public Usuario atualizarUsuario(@RequestBody Usuario usuario){
+       return usuarioRepositoty.save(usuario);
     }
 }

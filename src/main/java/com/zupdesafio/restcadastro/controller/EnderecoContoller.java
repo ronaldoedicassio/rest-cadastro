@@ -32,4 +32,9 @@ public class EnderecoContoller {
     public void removerEndereco(@RequestBody Endereco endereco){
         enderecoRepository.delete(endereco);
     }
+
+    @PutMapping
+    public Endereco atualizarEndereco(@RequestBody Endereco endereco){
+        return enderecoRepository.save(endereco);
+    }
 }

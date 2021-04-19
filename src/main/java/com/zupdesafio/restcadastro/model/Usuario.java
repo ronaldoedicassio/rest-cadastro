@@ -24,7 +24,7 @@ public class Usuario {
     @NotNull
     private String dataNasc;
 
-    @OneToMany(mappedBy ="usuario" )
+    @OneToMany(mappedBy = "usuario")
     private List<Endereco> endereco;
 
     public int getId() {
