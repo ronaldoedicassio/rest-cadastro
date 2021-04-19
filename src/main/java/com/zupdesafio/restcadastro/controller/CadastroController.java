@@ -23,17 +23,20 @@ public class CadastroController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario adicionar(@RequestBody Usuario usuario) { // o corpo da requisição vai ser convertido do tipo java para tipo usuario
+    public Usuario adicionarUsuario(@RequestBody Usuario usuario) { // o corpo da requisição vai ser convertido do tipo java para tipo usuario
         return usuarioRepositoty.save(usuario);
     }
 
-    @DeleteMapping
-    public void removerUsuario(@RequestBody Usuario usuario){
-        usuarioRepositoty.delete(usuario);
+    @DeleteMapping("/{id}")
+    public void removerUsuario(@PathVariable int id){
+        usuarioRepositoty.deleteById(id);
     }
 
-    @PutMapping
-    public Usuario atualizarUsuario(@RequestBody Usuario usuario){
-       return usuarioRepositoty.save(usuario);
+    @PutMapping("/{id}")
+    public Usuario atualizarUsuario(@RequestBody Usuario usuario, @PathVariable int id){
+
+        Usuario usuario1 = usuarioRepositoty.findById(id);
+
+        return usuarioRepositoty.save(usuario);
     }
 }

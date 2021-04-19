@@ -25,6 +25,7 @@ public class Usuario {
     private String dataNasc;
 
     @OneToMany(mappedBy = "usuario")
+
     private List<Endereco> endereco;
 
     public List<Endereco> getEndereco() {
