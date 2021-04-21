@@ -1,14 +1,14 @@
-package com.zupdesafio.restcadastro.model;
+package com.zupdesafio.restcadastro.modelo;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Endereco {
 
-
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String logradouro;
     private int numero;
     private String complemento;
@@ -16,12 +16,35 @@ public class Endereco {
     private String cidade;
     private String estado;
     private String cep;
-
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    public int getId() {
+    public Endereco(long id, String logradouro, int numero, String complemento, String bairro, String cidade, String estado, String cep, Usuario usuario) {
+        this.id = id;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.cep = cep;
+        this.usuario = usuario;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Endereco endereco = (Endereco) o;
+        return id == endereco.id && numero == endereco.numero && Objects.equals(logradouro, endereco.logradouro) && Objects.equals(complemento, endereco.complemento) && Objects.equals(bairro, endereco.bairro) && Objects.equals(cidade, endereco.cidade) && Objects.equals(estado, endereco.estado) && Objects.equals(cep, endereco.cep) && Objects.equals(usuario, endereco.usuario);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, logradouro, numero, complemento, bairro, cidade, estado, cep, usuario);
+    }
+
+    public long getId() {
         return id;
     }
 
