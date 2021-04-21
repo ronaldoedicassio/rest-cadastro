@@ -9,6 +9,5 @@ import java.util.List;
 @Repository // componente do spring, tipo repositorio, responsavel por interagir com banco de dados
 public interface UsuarioRepositoty extends JpaRepository<Usuario, Long> {
     List<Usuario> findByEndereco(String nomeUsuario);
-
 }
 
