@@ -1,6 +1,5 @@
 package com.zupdesafio.restcadastro.controller;
 
-import com.zupdesafio.restcadastro.controller.dto.EnderecoDTO;
 import com.zupdesafio.restcadastro.controller.form.EnderecoForm;
 import com.zupdesafio.restcadastro.modelo.Endereco;
 import com.zupdesafio.restcadastro.repository.EnderecoRepository;
@@ -26,11 +25,11 @@ public class EnderecoContoller {
     private UsuarioRepositoty usuarioRepositoty;
 
     @PostMapping
-    public ResponseEntity<EnderecoDTO> cadastrar(@RequestBody EnderecoForm form, UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity cadastrar(@RequestBody EnderecoForm form, UriComponentsBuilder uriComponentsBuilder) {
         Endereco endereco = form.converter(usuarioRepositoty);
         enderecoRepository.save(endereco);
 
-        URI uri = uriComponentsBuilder.path("/cadastro/{id}").buildAndExpand(endereco.getId()).toUri();
-        return ResponseEntity.created(uri).body(new EnderecoDTO(endereco));
+        URI uri = uriComponentsBuilder.path("/cadastro/endereco/{id}").buildAndExpand(endereco.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 }

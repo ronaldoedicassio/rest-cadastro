@@ -4,9 +4,10 @@ import com.zupdesafio.restcadastro.modelo.Endereco;
 import com.zupdesafio.restcadastro.modelo.Usuario;
 import com.zupdesafio.restcadastro.repository.UsuarioRepositoty;
 
+import java.util.Optional;
+
 public class EnderecoForm {
 
-    private long id;
     private String logradouro;
     private int numero;
     private String complemento;
@@ -14,15 +15,7 @@ public class EnderecoForm {
     private String cidade;
     private String estado;
     private String cep;
-    private int usuario_id;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private Long usuarioId;
 
     public String getLogradouro() {
         return logradouro;
@@ -52,16 +45,17 @@ public class EnderecoForm {
         return cep;
     }
 
-    public int getUsuario_id() {
-        return usuario_id;
+    public Long getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
+    public void setUsuarioId(Long usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
     public Endereco converter(UsuarioRepositoty usuarioRepositoty) {
-        Usuario usuario = usuarioRepositoty.findById(usuario_id);
+        Optional<Usuario> usuarioOptional = usuarioRepositoty.findById(usuarioId);
+        Usuario usuario = usuarioOptional.orElseThrow(() -> new RuntimeException("ID invalido"));
         return new Endereco(logradouro,numero,complemento,bairro,cidade,estado,cep,usuario);
     }
 }

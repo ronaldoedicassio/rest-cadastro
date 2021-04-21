@@ -25,15 +25,14 @@ public class UsuarioController {
 
         List<Usuario> usuarios = usuarioRepositoty.findAll();
         return UsuarioDTO.converter(usuarios);
-
     }
 
     @PostMapping
-    public ResponseEntity<UsuarioDTO> cadastrar(@RequestBody UsuarioForm form, UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity cadastrar(@RequestBody UsuarioForm form, UriComponentsBuilder uriComponentsBuilder) {
         Usuario usuario = form.converter();
         usuarioRepositoty.save(usuario);
 
         URI uri = uriComponentsBuilder.path("/cadastro/{id}").buildAndExpand(usuario.getId()).toUri();
-        return ResponseEntity.created(uri).body(new UsuarioDTO(usuario));
+        return ResponseEntity.created(uri).build();
     }
 }

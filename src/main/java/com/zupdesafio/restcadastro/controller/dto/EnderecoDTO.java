@@ -31,6 +31,7 @@ public class EnderecoDTO {
     public EnderecoDTO(Endereco endereco) {
     }
 
+
     public int getId() {
         return id;
     }

@@ -8,7 +8,7 @@ public class Endereco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String logradouro;
     private int numero;
     private String complemento;
@@ -19,8 +19,7 @@ public class Endereco {
     @ManyToOne
     private Usuario usuario;
 
-    public Endereco(long id, String logradouro, int numero, String complemento, String bairro, String cidade, String estado, String cep, Usuario usuario) {
-        this.id = id;
+    public Endereco(String logradouro, int numero, String complemento, String bairro, String cidade, String estado, String cep, Usuario usuario) {
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
@@ -29,9 +28,6 @@ public class Endereco {
         this.estado = estado;
         this.cep = cep;
         this.usuario = usuario;
-    }
-
-    public Endereco(String logradouro, int numero, String complemento, String bairro, String cidade, String estado, String cep, Usuario usuario) {
     }
 
     public Endereco(){
@@ -50,11 +46,11 @@ public class Endereco {
         return Objects.hash(id, logradouro, numero, complemento, bairro, cidade, estado, cep, usuario);
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

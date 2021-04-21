@@ -4,7 +4,6 @@ import com.zupdesafio.restcadastro.modelo.Usuario;
 
 public class UsuarioForm {
 
-
     private String nome;
     private String cpf;
     private String email;
