@@ -47,6 +47,9 @@ public class Usuario {
         this.dataNasc = dataNasc;
         this.endereco = endereco;
     }
+    public Usuario(){
+
+    }
 
     public List<Endereco> getEndereco() {
         return endereco;

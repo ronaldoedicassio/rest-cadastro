@@ -34,6 +34,9 @@ public class Endereco {
     public Endereco(String logradouro, int numero, String complemento, String bairro, String cidade, String estado, String cep, Usuario usuario) {
     }
 
+    public Endereco(){
+
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
