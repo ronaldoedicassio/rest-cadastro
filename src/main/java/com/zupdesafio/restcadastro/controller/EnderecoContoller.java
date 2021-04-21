@@ -1,11 +1,8 @@
 package com.zupdesafio.restcadastro.controller;
 
 import com.zupdesafio.restcadastro.controller.dto.EnderecoDTO;
-import com.zupdesafio.restcadastro.controller.dto.UsuarioDTO;
 import com.zupdesafio.restcadastro.controller.form.EnderecoForm;
-import com.zupdesafio.restcadastro.controller.form.UsuarioForm;
 import com.zupdesafio.restcadastro.modelo.Endereco;
-import com.zupdesafio.restcadastro.modelo.Usuario;
 import com.zupdesafio.restcadastro.repository.EnderecoRepository;
 import com.zupdesafio.restcadastro.repository.UsuarioRepositoty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +31,6 @@ public class EnderecoContoller {
         enderecoRepository.save(endereco);
 
         URI uri = uriComponentsBuilder.path("/cadastro/{id}").buildAndExpand(endereco.getId()).toUri();
-        return ResponseEntity.created(uri).body(new UsuarioDTO(endereco));
+        return ResponseEntity.created(uri).body(new EnderecoDTO(endereco));
     }
 }

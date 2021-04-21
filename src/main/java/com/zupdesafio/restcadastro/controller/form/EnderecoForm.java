@@ -14,7 +14,7 @@ public class EnderecoForm {
     private String cidade;
     private String estado;
     private String cep;
-    private Usuario usuario;
+    private int usuario_id;
 
     public long getId() {
         return id;
@@ -52,12 +52,16 @@ public class EnderecoForm {
         return cep;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public int getUsuario_id() {
+        return usuario_id;
+    }
+
+    public void setUsuario_id(int usuario_id) {
+        this.usuario_id = usuario_id;
     }
 
     public Endereco converter(UsuarioRepositoty usuarioRepositoty) {
-        Usuario usuario = usuarioRepositoty.findById(getUsuario().getId());
-        return logradouro,numero,complemento,bairro,cidade,estado,cep,usuario;
+        Usuario usuario = usuarioRepositoty.findById(usuario_id);
+        return new Endereco(logradouro,numero,complemento,bairro,cidade,estado,cep,usuario);
     }
 }

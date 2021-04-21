@@ -43,7 +43,6 @@ public class UsuarioForm {
     }
 
     public Usuario converter() {
-        //Usuario usuario =
         return new Usuario(nome,cpf,email,dataNasc);
     }
 
