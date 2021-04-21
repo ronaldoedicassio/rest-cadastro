@@ -10,5 +10,6 @@ import java.util.List;
 public interface UsuarioRepositoty extends JpaRepository<Usuario, Long> {
     List<Usuario> findByEndereco(String nomeUsuario);
 
+    Usuario findById(int usuario_id);
 }
 

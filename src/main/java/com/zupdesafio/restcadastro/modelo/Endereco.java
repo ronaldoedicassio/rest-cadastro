@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Endereco {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String logradouro;
     private int numero;
@@ -29,6 +29,9 @@ public class Endereco {
         this.estado = estado;
         this.cep = cep;
         this.usuario = usuario;
+    }
+
+    public Endereco(String logradouro, int numero, String complemento, String bairro, String cidade, String estado, String cep, Usuario usuario) {
     }
 
     @Override
