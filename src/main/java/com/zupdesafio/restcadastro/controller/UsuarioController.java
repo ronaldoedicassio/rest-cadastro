@@ -19,13 +19,6 @@ public class UsuarioController {
     @Autowired // vai adicionar uma instância automaticamente
     private UsuarioRepositoty usuarioRepositoty;
 
-    @GetMapping
-    public List<UsuarioDTO> listar(Long id) {
-
-        List<Usuario> usuarios = usuarioRepositoty.findAll();
-        return UsuarioDTO.converter(usuarios);
-    }
-
     @PostMapping
     public ResponseEntity cadastrar(@RequestBody UsuarioForm form, UriComponentsBuilder uriComponentsBuilder) {
         Usuario usuario = form.converter();
@@ -42,4 +35,12 @@ public class UsuarioController {
         return ResponseEntity.created(uri).build();
 
     }
+
+    @GetMapping
+    public List<UsuarioDTO> listar(Long id) {
+
+        List<Usuario> usuarios = usuarioRepositoty.findAll();
+        return UsuarioDTO.converter(usuarios);
+    }
+
 }
