@@ -4,6 +4,7 @@ import com.zupdesafio.restcadastro.modelo.Endereco;
 import com.zupdesafio.restcadastro.modelo.Usuario;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class UsuarioDTO {

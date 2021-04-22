@@ -2,14 +2,10 @@ package com.zupdesafio.restcadastro.controller.form;
 
 import com.zupdesafio.restcadastro.modelo.Usuario;
 
-import javax.persistence.Column;
-
 public class UsuarioForm {
 
     private String nome;
-    @Column(unique = true)
     private String cpf;
-    @Column(unique = true)
     private String email;
     private String dataNasc;
 
@@ -48,6 +44,7 @@ public class UsuarioForm {
     public Usuario converter() {
         return new Usuario(nome,cpf,email,dataNasc);
     }
+
 
 }
 

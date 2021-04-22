@@ -20,7 +20,7 @@ public class UsuarioController {
     private UsuarioRepositoty usuarioRepositoty;
 
     @GetMapping
-    public List<UsuarioDTO> listar() {
+    public List<UsuarioDTO> listar(Long id) {
 
         List<Usuario> usuarios = usuarioRepositoty.findAll();
         return UsuarioDTO.converter(usuarios);
@@ -29,9 +29,17 @@ public class UsuarioController {
     @PostMapping
     public ResponseEntity cadastrar(@RequestBody UsuarioForm form, UriComponentsBuilder uriComponentsBuilder) {
         Usuario usuario = form.converter();
-        usuarioRepositoty.save(usuario);
 
+        Usuario usuarioCpf = usuarioRepositoty.findBycpf(usuario.getCpf());
+        Usuario usuarioEmail = usuarioRepositoty.findByEmail(usuario.getEmail());
+
+        if (usuarioCpf != null || usuarioEmail != null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        usuarioRepositoty.save(usuario);
         URI uri = uriComponentsBuilder.path("/cadastro/{id}").buildAndExpand(usuario.getId()).toUri();
         return ResponseEntity.created(uri).build();
+
     }
 }
