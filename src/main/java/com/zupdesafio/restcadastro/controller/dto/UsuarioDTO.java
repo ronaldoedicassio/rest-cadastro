@@ -1,6 +1,5 @@
 package com.zupdesafio.restcadastro.controller.dto;
 
-import com.zupdesafio.restcadastro.modelo.Endereco;
 import com.zupdesafio.restcadastro.modelo.Usuario;
 
 import java.util.List;
@@ -13,11 +12,9 @@ public class UsuarioDTO {
     private String cpf;
     private String email;
     private String dataNasc;
-    private List<Endereco> enderecoDTO;
+    private List<EnderecoDTO> enderecoDTO;
 
-    public List<Endereco> getEnderecoDTO() {
-        return enderecoDTO;
-    }
+
 
     public UsuarioDTO(Usuario usuario) {
         this.id = usuario.getId();
@@ -25,17 +22,25 @@ public class UsuarioDTO {
         this.cpf = usuario.getCpf();
         this.email = usuario.getEmail();
         this.dataNasc = usuario.getDataNasc();
-        this.enderecoDTO = usuario.getEndereco();
+        //this.enderecoDTO = ;
 
     }
 
-    public UsuarioDTO(Endereco endereco) {
+    public List<EnderecoDTO> getEnderecoDTO() {
+        return enderecoDTO;
+    }
+
+    public UsuarioDTO(Optional<Usuario> endereco) {
+
     }
 
     public static List<UsuarioDTO> converter(Optional<Usuario> usuarios) {
         return usuarios.stream().map(UsuarioDTO::new).collect(Collectors.toList());
     }
 
+//    public UsuarioDTO(Usuario usuario){
+//
+//    }
     public Long getId() {
         return id;
     }

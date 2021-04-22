@@ -42,6 +42,7 @@ public class UsuarioController {
 
         Optional<Usuario> usuarios = usuarioRepositoty.findById(id);
         return UsuarioDTO.converter(usuarios);
+       // return new UsuarioDTO(usuarios);
     }
 
 }
