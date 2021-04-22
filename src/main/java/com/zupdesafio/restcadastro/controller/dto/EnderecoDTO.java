@@ -13,6 +13,11 @@ public class EnderecoDTO {
     private String cidade;
     private String estado;
     private String cep;
+    private Usuario usuarioId;
+
+    public EnderecoDTO(Usuario usuario) {
+        this.usuarioId = usuario;
+    }
 
     public EnderecoDTO(int id, String logradouro, int numero, String complemento, String bairro, String cidade, String estado, String cep, Usuario usuario) {
         this.id = id;
@@ -28,6 +33,13 @@ public class EnderecoDTO {
     public EnderecoDTO(Endereco endereco) {
     }
 
+    public Usuario getUsuario() {
+        return usuarioId;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuarioId = usuario;
+    }
 
     public int getId() {
         return id;

@@ -4,7 +4,6 @@ import com.zupdesafio.restcadastro.modelo.Usuario;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class UsuarioDTO {
     private Long id;
@@ -14,16 +13,17 @@ public class UsuarioDTO {
     private String dataNasc;
     private List<EnderecoDTO> enderecoDTO;
 
-
-
     public UsuarioDTO(Usuario usuario) {
         this.id = usuario.getId();
         this.nome = usuario.getNome();
         this.cpf = usuario.getCpf();
         this.email = usuario.getEmail();
         this.dataNasc = usuario.getDataNasc();
-        //this.enderecoDTO = ;
 
+    }
+
+    public static UsuarioDTO converter(Optional<Usuario> usuarios) {
+        return new UsuarioDTO(usuarios);
     }
 
     public List<EnderecoDTO> getEnderecoDTO() {
@@ -34,9 +34,9 @@ public class UsuarioDTO {
 
     }
 
-    public static List<UsuarioDTO> converter(Optional<Usuario> usuarios) {
-        return usuarios.stream().map(UsuarioDTO::new).collect(Collectors.toList());
-    }
+//    public static List<UsuarioDTO> converter(Optional<Usuario> usuarios) {
+//        return usuarios.stream().map(UsuarioDTO::new).collect(Collectors.toList());
+//    }
 
 //    public UsuarioDTO(Usuario usuario){
 //

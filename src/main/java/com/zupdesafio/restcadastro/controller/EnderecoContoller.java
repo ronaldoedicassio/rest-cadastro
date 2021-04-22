@@ -26,6 +26,7 @@ public class EnderecoContoller {
 
     @PostMapping
     public ResponseEntity cadastrar(@RequestBody EnderecoForm form, UriComponentsBuilder uriComponentsBuilder) {
+
         Endereco endereco = form.converter(usuarioRepositoty);
         enderecoRepository.save(endereco);
 

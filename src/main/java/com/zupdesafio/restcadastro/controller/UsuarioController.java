@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -38,7 +37,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public List<UsuarioDTO> listar(@PathVariable Long id) {
+    public UsuarioDTO listar(@PathVariable Long id) {
 
         Optional<Usuario> usuarios = usuarioRepositoty.findById(id);
         return UsuarioDTO.converter(usuarios);
