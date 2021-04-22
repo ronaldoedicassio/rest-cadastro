@@ -39,9 +39,12 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public UsuarioDTO listar(@PathVariable Long id) {
 
-        Optional<Usuario> usuarios = usuarioRepositoty.findById(id);
-        return UsuarioDTO.converter(usuarios);
-       // return new UsuarioDTO(usuarios);
+        Optional<Usuario> usuarioOptional = usuarioRepositoty.findById(id);
+
+        Usuario usuario = usuarioOptional.orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado, favor informar um usuário cadastrado"));
+
+        return new UsuarioDTO(usuario);
+
     }
 
 }

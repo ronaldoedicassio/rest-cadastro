@@ -1,7 +1,6 @@
 package com.zupdesafio.restcadastro.controller.dto;
 
 import com.zupdesafio.restcadastro.modelo.Endereco;
-import com.zupdesafio.restcadastro.modelo.Usuario;
 
 public class EnderecoDTO {
 
@@ -13,32 +12,15 @@ public class EnderecoDTO {
     private String cidade;
     private String estado;
     private String cep;
-    private Usuario usuarioId;
-
-    public EnderecoDTO(Usuario usuario) {
-        this.usuarioId = usuario;
-    }
-
-    public EnderecoDTO(int id, String logradouro, int numero, String complemento, String bairro, String cidade, String estado, String cep, Usuario usuario) {
-        this.id = id;
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.complemento = complemento;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.cep = cep;
-    }
 
     public EnderecoDTO(Endereco endereco) {
-    }
-
-    public Usuario getUsuario() {
-        return usuarioId;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuarioId = usuario;
+        this.logradouro = endereco.getLogradouro();
+        this.numero = endereco.getNumero();
+        this.complemento = endereco.getComplemento();
+        this.bairro = endereco.getBairro();
+        this.cidade = endereco.getCidade();
+        this.estado = endereco.getEstado();
+        this.cep = endereco.getCep();
     }
 
     public int getId() {

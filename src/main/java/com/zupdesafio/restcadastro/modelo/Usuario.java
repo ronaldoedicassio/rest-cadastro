@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Entity // estamos dizendo que isso e uma entidade
 public class Usuario {
@@ -48,7 +47,7 @@ public class Usuario {
         this.dataNasc = dataNasc;
         this.endereco = endereco;
     }
-    public Usuario(Optional<Usuario> usuarios){
+    public Usuario(){
 
     }
 
