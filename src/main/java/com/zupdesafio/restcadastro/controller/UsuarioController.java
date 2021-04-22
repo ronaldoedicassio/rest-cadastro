@@ -11,6 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cadastro")
@@ -36,10 +37,10 @@ public class UsuarioController {
 
     }
 
-    @GetMapping
-    public List<UsuarioDTO> listar(Long id) {
+    @GetMapping("/{id}")
+    public List<UsuarioDTO> listar(@PathVariable Long id) {
 
-        List<Usuario> usuarios = usuarioRepositoty.findAll();
+        Optional<Usuario> usuarios = usuarioRepositoty.findById(id);
         return UsuarioDTO.converter(usuarios);
     }
 

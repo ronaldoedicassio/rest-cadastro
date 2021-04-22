@@ -14,8 +14,6 @@ public class EnderecoDTO {
     private String estado;
     private String cep;
 
-    private Usuario usuario;
-
     public EnderecoDTO(int id, String logradouro, int numero, String complemento, String bairro, String cidade, String estado, String cep, Usuario usuario) {
         this.id = id;
         this.logradouro = logradouro;
@@ -25,7 +23,6 @@ public class EnderecoDTO {
         this.cidade = cidade;
         this.estado = estado;
         this.cep = cep;
-        this.usuario = usuario;
     }
 
     public EnderecoDTO(Endereco endereco) {
@@ -94,13 +91,5 @@ public class EnderecoDTO {
 
     public void setCep(String cep) {
         this.cep = cep;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 }
